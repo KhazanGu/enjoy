@@ -15,7 +15,7 @@ alias home="cd ~"
 alias doc="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
-alias dev="cd ~/Dev"
+alias dev="cd ~/Development"
 
 
 #Chrome
