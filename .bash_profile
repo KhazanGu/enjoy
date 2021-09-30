@@ -1,5 +1,3 @@
-
-
 timestamp=$( date +%T )
 
 # find document
@@ -22,6 +20,9 @@ finddir() {
     done
 }
 
+
+# source .base_profile
+alias ebp="cd ~/ && vim .bash_profile"
 
 # source .base_profile
 alias sbp="cd ~/ && source .bash_profile"
@@ -57,30 +58,69 @@ url() {
 gg() { open -a 'Google Chrome' "http://www.google.com/search?q= $1"; }
 
 # XCode
-xcode() {
-    local doc=$(finddir . '.xcworkspace')
-    open $doc
+findxcworkspace() {
+    shopt -s nullglob dotglob
+    # printf "path:$1
+    for pathname in "$1"/*; do
+        if [ -d "$pathname" ]; then
+            if [[ $pathname =~ ".xcodeproj"$ ]]; then
+                continue
+            elif [[ $pathname =~ ".xcworkspace"$ ]]; then
+                echo $pathname
+                break 2
+            else 
+                findxcworkspace "$pathname"
+            fi
+        fi
+    done
+}
+
+findxcodeproj() {
+    shopt -s nullglob dotglob
+    # printf "path:$1
+    for pathname in "$1"/*; do
+        if [ -d "$pathname" ]; then
+            if [[ $pathname =~ ".xcodeproj"$ ]]; then
+                echo $pathname
+                break 2
+            elif [[ $pathname =~ ".xcworkspace"$ ]]; then
+                continue
+            else 
+                findxcworkspace "$pathname"
+            fi
+        fi
+    done
+}
+
+
+xcws() {
+    local xcworkspace=$(findxcworkspace .)
+    echo 'xcode open '$xcworkspace''
+    open $xcworkspace
+}
+
+xcp() {
+    local xcodeproj=$(findxcodeproj .)
+    echo 'xcode open '$xcodeproj''
+    open $xcodeproj
 }
 
 # Git
 diff_file_path="$HOME/Desktop/${timestamp}.diff"
 
-alias gd="git diff --output=${diff_file_path} && code -r ${diff_file_path}"
+alias gd="git diff --color > ${diff_file_path} && code -r ${diff_file_path}"
 
 
-
-# Define `setproxy` command to enable proxy configuration
+# Proxy
 setproxy() {
   export http_proxy="http://localhost:7890"
   export https_proxy="http://localhost:7890"
 }
 
-# Define `unsetproxy` command to disable proxy configuration
 unsetproxy() {
   unset http_proxy
   unset https_proxy
 }
-
 
 
 # Flutter
