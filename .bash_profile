@@ -21,7 +21,7 @@ finddir() {
 }
 
 
-# source .base_profile
+# edit .base_profile
 alias ebp="cd ~/ && vim .bash_profile"
 
 # source .base_profile
