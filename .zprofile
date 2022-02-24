@@ -78,3 +78,11 @@ unsetproxy() {
 
 # Flutter
 export PATH="$PATH:$HOME/flutter/bin"
+
+# hexo
+hr() {
+  pkill -9 hexo
+  hexo clean
+  hexo generate
+  hexo server
+}
