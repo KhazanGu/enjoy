@@ -86,3 +86,6 @@ hr() {
   hexo generate
   hexo server
 }
+
+# system
+alias sleep="open -a ScreenSaverEngine.app"
