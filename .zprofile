@@ -1,3 +1,5 @@
+# Zsh has been adopted as the default shell for macOS Catalina.
+
 # Easier navigation: .., ..., ...., .....
 alias ..="cd .."
 alias ...="cd ../.."
