@@ -1,6 +1,3 @@
-timestamp=$( date +%T )
-
-
 # Easier navigation: .., ..., ...., .....
 alias ..="cd .."
 alias ...="cd ../.."
@@ -13,6 +10,19 @@ alias doc="cd ~/Documents"
 alias dow="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 
+# Define `setproxy` command to enable proxy configuration
+setproxy() {
+  export http_proxy="http://localhost:7890"
+  export https_proxy="http://localhost:7890"
+}
+
+# Define `unsetproxy` command to disable proxy configuration
+unsetproxy() {
+  unset http_proxy
+  unset https_proxy
+}
+
+timestamp=$( date +%T )
 
 # XCode
 findxcworkspace() {
@@ -31,6 +41,7 @@ findxcworkspace() {
         fi
     done
 }
+
 findxcodeproj() {
     # shopt -s nullglob dotglob
     # printf "path:$1
@@ -62,30 +73,8 @@ xcp() {
 diff_file_path="$HOME/Desktop/${timestamp}.diff"
 alias gd="git diff --color > ${diff_file_path} && code -r ${diff_file_path}"
 
-
-# Define `setproxy` command to enable proxy configuration
-setproxy() {
-  export http_proxy="http://localhost:7890"
-  export https_proxy="http://localhost:7890"
-}
-
-# Define `unsetproxy` command to disable proxy configuration
-unsetproxy() {
-  unset http_proxy
-  unset https_proxy
-}
-
-
 # Flutter
 export PATH="$PATH:$HOME/flutter/bin"
-
-# hexo
-hr() {
-  pkill -9 hexo
-  hexo clean
-  hexo generate
-  hexo server
-}
 
 # system
 alias sleep="open -a ScreenSaverEngine.app"
