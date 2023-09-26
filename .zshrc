@@ -80,5 +80,9 @@ alias gdo="git diff --color > ${diff_file_path} && code -r ${diff_file_path}"
 # Flutter
 export PATH="$PATH:$HOME/flutter/bin"
 
+# Android
+export ANDROID_HOME=/Users/$USER/Library/Android/sdk
+export PATH="$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools"
+
 # system
 alias sleep="open -a ScreenSaverEngine.app"
