@@ -16,8 +16,8 @@ alias dt="cd ~/Desktop"
 
 # Define `setproxy` command to enable proxy configuration
 setproxy() {
-  export http_proxy="http://localhost:7890"
-  export https_proxy="http://localhost:7890"
+  export http_proxy="http://localhost:7897"
+  export https_proxy="http://localhost:7897"
 }
 
 # Define `unsetproxy` command to disable proxy configuration
