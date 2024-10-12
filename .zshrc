@@ -73,6 +73,9 @@ xcp() {
     open $xcodeproj
 }
 
+# homebrew
+export PATH=/opt/homebrew/bin:$PATH
+
 # Git
 diff_file_path="$HOME/Desktop/${timestamp}.diff"
 alias gdo="git diff --color > ${diff_file_path} && code -r ${diff_file_path}"
